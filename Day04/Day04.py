@@ -1,6 +1,3 @@
-import math
-
-
 def load_data(filename):
     with open(filename) as f:
         raw_data = f.read().split()
@@ -15,9 +12,9 @@ def create_bingo_tables(data):
     board_count = len(data)
     tables = [[[[0, 0] for x in range(5)] for x in range(5)] for x in range(board_count)]
     for count, value in enumerate(data[1:]):
-        table_number = math.floor(count / 25)
+        table_number = count // 25
         item_column = count % 5
-        item_row = math.floor(count / 5) % 5
+        item_row = (count // 5) % 5
         tables[table_number][item_column][item_row] = [value, 0]
         #print("table number: ", table_number, "item column: ", item_column, "item row: ", item_row, "value: ", value)
     return tables
