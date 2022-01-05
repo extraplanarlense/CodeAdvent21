@@ -12,7 +12,18 @@ if __name__ == '__main__':
             buffer = current_number
         else:
             buffer = current_number
-    print(counter)
+    print("Part 1: ", counter)
+    counter = 0
+    buffer = -1
+    for idx in range(len(numbers)):
+        if (buffer != -1):
+            if idx < (len(numbers) - 2):
+                if numbers[idx]+ numbers[idx + 1] + numbers[idx + 2] > buffer:
+                    counter += 1
+                buffer = numbers[idx]+ numbers[idx + 1] + numbers[idx + 2]
+        else:
+            buffer = numbers[idx]+ numbers[idx + 1] + numbers[idx + 2]
+    print("Part 2: ", counter)
 
 
 
